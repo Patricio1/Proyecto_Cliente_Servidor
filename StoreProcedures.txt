@@ -1,0 +1,39 @@
+SELECT *
+(1000)
+//Reemplazar el select* por especificar los campos
+
+
+1.- SQL EMBEBIDO (En la parte del cliente)
+2.- STORE PROCEDURE   //Mas Rapido==> optimiza busqueda de informacion, ademas por seguridad y evitar sql inyection
+
+
+STORE PROCEDURES
+
+DEBER: Mandar todo el SQL en store procedure en SQL Server(select,insert, update,delete de todas las tablas)
+
+//PROCEDIMIENTO PARA OBTENER DATOS DE CLIENTE SEGUN SU CODIGO
+CREATE PROCEDURE P_Select_Customers_por_primarykey(@CustomerID int)
+AS
+BEGIN
+SELECT	 CustomerID,Name,Address,City,State,ZipCode FROM Customers 
+WHERE CustomerID = @CustomerID	
+END
+GO
+
+//PROCEDIMIENTO PARA INSERTAR DATOS DE CLIENTE
+CREATE PROCEDURE P_inssertar_Customers(@Name varchar(100), 
+									   @Address varchar(50),
+									   @City varchar(20),
+									   @State char(2),
+									   @ZipCode char(15))
+AS
+BEGIN
+INSERT INTO Customers (Name, Address, City, State, ZipCode)
+               VALUES (@Name, @Address, @City, @State, @ZipCode)
+END
+GO
+
+
+clase 09/02/2015
+DataViews -Consultas - busquedas, ordenamientos
+
