@@ -137,7 +137,7 @@
             this.txtContraseña.PasswordChar = '*';
             this.txtContraseña.Size = new System.Drawing.Size(100, 20);
             this.txtContraseña.TabIndex = 3;
-            this.txtContraseña.Text = "sa";
+            this.txtContraseña.Text = "MMABOOKS";
             // 
             // txtServidor
             // 
@@ -147,6 +147,7 @@
             this.txtServidor.Name = "txtServidor";
             this.txtServidor.Size = new System.Drawing.Size(128, 20);
             this.txtServidor.TabIndex = 7;
+            this.txtServidor.Text = "XE";
             this.txtServidor.TextChanged += new System.EventHandler(this.txtServidor_TextChanged);
             // 
             // txtUsuario
@@ -156,7 +157,7 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(100, 20);
             this.txtUsuario.TabIndex = 1;
-            this.txtUsuario.Text = "sa";
+            this.txtUsuario.Text = "MMABOOKS";
             // 
             // btnSalir
             // 
@@ -198,6 +199,7 @@
             this.Name = "FormaIngreso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ingreso al sistema";
+            this.Load += new System.EventHandler(this.FormaIngreso_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

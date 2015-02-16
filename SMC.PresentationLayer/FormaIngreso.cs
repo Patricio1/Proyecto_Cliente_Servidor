@@ -5,10 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-
-using System.Data.SqlClient;//Proveedor para SQL Server.
-using System.Data.Odbc;//SQl server.
-using System.Data.OleDb;//Sql Server.
+using Oracle.DataAccess.Client;
 
 namespace SMC.PresentationLayer
 {
@@ -27,7 +24,7 @@ namespace SMC.PresentationLayer
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             //Crear un objeto para la conexion entre cliente/servidor.
-            SqlConnection connection = new SqlConnection();
+            OracleConnection connection = new OracleConnection();
             //OdbcConnection connection = new OdbcConnection();
             //OleDbConnection connection2 = new OleDbConnection();
             try
@@ -36,7 +33,8 @@ namespace SMC.PresentationLayer
                 //connection2.ConnectionString = "Provider=SQLOLEDB;Data Source=(local);Integrated Security=SSPI";
 
                 //Establecer las principales propiedades del Connection.
-                connection.ConnectionString = "Data Source="+txtServidor.Text+";Initial Catalog="+txtBaseDatos.Text+";User ID="+txtUsuario.Text+";Password="+txtContraseña.Text+"";
+
+                connection.ConnectionString = "User Id="+txtUsuario.Text+"; Password="+txtContraseña.Text+"; Data Source="+txtServidor.Text+"";
                 //"Data Source="+txtServidor.Text+";Initial Catalog="+txtBaseDatos.Text+";User ID="+txtUsuario.Text+";Password="+txtContraseña.Text+"";
                 
                 //Almacenar el ConnectionString  en un campo estatico
@@ -56,7 +54,7 @@ namespace SMC.PresentationLayer
                 FormaMenu forma = new FormaMenu();
                 forma.ShowDialog();
             }//errores de BD.
-            catch (SqlException ex)
+            catch (OracleException ex)
             {
                 //string saltoLinea = "\n";
                 //string problema = "EL PROBLEMA GENERADO PUEDE DEBERSE A LOS SIGUIENTES FACTORES";
@@ -118,7 +116,7 @@ namespace SMC.PresentationLayer
 
                 //Mostrar el mensaje personalizado.
                 MessageBox.Show(Excepciones.MensajePersonalizado, 
-                    "Error de SQL Server", 
+                    "Error de Oracle Server", 
                     MessageBoxButtons.OK, 
                     MessageBoxIcon.Error);
 
@@ -144,6 +142,11 @@ namespace SMC.PresentationLayer
         }
 
         private void txtServidor_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormaIngreso_Load(object sender, EventArgs e)
         {
 
         }

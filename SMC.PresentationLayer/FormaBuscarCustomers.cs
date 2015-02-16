@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+using Oracle.DataAccess.Client;
 
 
 namespace SMC.PresentationLayer
@@ -24,14 +24,18 @@ namespace SMC.PresentationLayer
 
         private void FormaBuscarCustomers_Load(object sender, EventArgs e)
         {
-             SqlConnection connection = new SqlConnection();
+            OracleConnection connection = new OracleConnection();
              //Conexion.CadenaConexion = connection.ConnectionString;
-             connection.ConnectionString = "Data Source=ACER-PC;Initial Catalog=MMABOOKS;User ID=sa;Password=sa";
+
+            Conexion.CadenaConexion = "User Id= MMABooks; Password=MMABooks; Data Source=XE";
+            connection.ConnectionString = Conexion.CadenaConexion;
+
+             
              String select = "SELECT CustomerID,Name,Address,City,State " +
                           "FROM Customers";
-            SqlCommand command = new SqlCommand(select,connection);
+             OracleCommand command = new OracleCommand(select, connection);
 
-            SqlDataAdapter adapter = new SqlDataAdapter();
+             OracleDataAdapter adapter = new OracleDataAdapter();
             adapter.SelectCommand = command;
 
             DataSet dataset = new DataSet();
@@ -54,7 +58,7 @@ namespace SMC.PresentationLayer
 
             connection.Open();
             // usar un DataReader para recuperar los datos
-            SqlDataReader reader = command.ExecuteReader(); //sqlDataReader no tiene contructor
+            OracleDataReader reader = command.ExecuteReader(); //sqlDataReader no tiene contructor
             DataTable table = new DataTable();
             table.Load(reader); //leer los datos
 
@@ -165,22 +169,9 @@ namespace SMC.PresentationLayer
            
         }
 
-        private void dgvDatos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //FormaMcliente form = new FormaMcliente();
-            //form.txtIDcliente.Text="gol";
-            //MessageBox.Show("no!!!!!!");
-            
-        }
+      
 
-        private void dgvDatos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-            
-            
-
-            MessageBox.Show("no!!!!!!");
-        }
+        
 
         private void dgvDatos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

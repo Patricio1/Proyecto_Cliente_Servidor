@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using System.Data.SqlClient;//SQL Server.
-
+using Oracle.DataAccess.Client;
 namespace SMC.PresentationLayer
 {
     public partial class FormaAMcliente : SMC.PresentationLayer.FormaPlantillaAgregarModificar
@@ -30,7 +30,7 @@ namespace SMC.PresentationLayer
                 txtCodigoZip.Text = FormaMcliente.CodigoZip;
             }
 
-            SqlConnection connection = new SqlConnection();            
+            OracleConnection connection = new OracleConnection();            
 
             try
             {
@@ -39,7 +39,7 @@ namespace SMC.PresentationLayer
                 //Preparar el SQL para el objeto Command
                 string select = "SELECT StateCode, StateName " +
                                 "FROM States";
-                SqlCommand command = new SqlCommand(select, connection);
+               OracleCommand command = new OracleCommand(select, connection);
                 
                 //Abrir la conexion
                 connection.Open();//ConnectionString
@@ -47,7 +47,7 @@ namespace SMC.PresentationLayer
                 //Crear un DataReader para leer los datos (SELECT)
                 //ejecutar el command.
                 //SqlDataReader reader = command.ExecuteReader(CommandBehavior.SchemaOnly);
-                SqlDataReader reader = command.ExecuteReader();
+               OracleDataReader reader = command.ExecuteReader();
 
                 #region Primera forma
 
@@ -91,7 +91,7 @@ namespace SMC.PresentationLayer
 
                 //Mostrar el mensaje personalizado.
                 MessageBox.Show(Excepciones.MensajePersonalizado,
-                    "Error de SQL Server",
+                    "Error de Oracle Server",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
 
@@ -117,24 +117,24 @@ namespace SMC.PresentationLayer
             }
         }
 
-        private void InsertarSQLEmbebido(SqlConnection connection) {
+        private void InsertarSQLEmbebido(OracleConnection connection) {
 
             //Se presiono el boton Insertar: 
             //Preparar el: INSERT.
             string insert = "INSERT INTO Customers (Name, Address, City, State, ZipCode) " +
-                            "VALUES (@Name, @Address, @City, @State, @ZipCode)";
+                            "VALUES (:Name, :Address, :City, :State, :ZipCode)";
 
-            SqlCommand command = new SqlCommand(insert, connection);
+            OracleCommand command = new OracleCommand(insert, connection);
 
             //Como tiene parametros el SQL, hay que crear, agregar y enviar
             //los valores para los parametros.
-            command.Parameters.Add("@Name", SqlDbType.VarChar, 100).Value = txtNombre.Text;
-            command.Parameters.Add("@Address", SqlDbType.VarChar, 50).Value = txtDireccion.Text;
-            command.Parameters.Add("@City", SqlDbType.VarChar, 20).Value = txtCiudad.Text;
+            command.Parameters.Add(":Name", OracleDbType.Varchar2, 100).Value = txtNombre.Text;
+            command.Parameters.Add(":Address", OracleDbType.Varchar2, 50).Value = txtDireccion.Text;
+            command.Parameters.Add(":City", OracleDbType.Varchar2, 20).Value = txtCiudad.Text;
 
-            command.Parameters.Add("@State", SqlDbType.Char, 2).Value = cboEstado.SelectedValue.ToString();
+            command.Parameters.Add(":State", OracleDbType.Char, 2).Value = cboEstado.SelectedValue.ToString();
 
-            command.Parameters.Add("@ZipCode", SqlDbType.Char, 15).Value = txtCodigoZip.Text;
+            command.Parameters.Add(":ZipCode", OracleDbType.Char, 15).Value = txtCodigoZip.Text;
 
             //Abrir la conexion.
             connection.Open();
@@ -190,7 +190,7 @@ namespace SMC.PresentationLayer
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection();
+            OracleConnection connection = new OracleConnection();
 
             try
             {
@@ -199,8 +199,8 @@ namespace SMC.PresentationLayer
                 //Verificar si se hace un INSERT o un UPDATE
                 if (FormaMcliente.BotonPresionado == 1)
                 {
-                    //InsertarSQLEmbebido(connection);
-                    insertarStoreProcedure(connection);
+                    InsertarSQLEmbebido(connection);
+                    //insertarStoreProcedure(connection);
                 }
                 else//Actualizar el registro correspondiente.
                     if (FormaMcliente.BotonPresionado == 2)
@@ -208,22 +208,22 @@ namespace SMC.PresentationLayer
                         //Se presiono el boton Modificar: 
                         //Preparar el: UPDATE.
                         string update = "UPDATE Customers SET  " +
-                        "Name=@Name,Address=@Address,City=@City,State=@State,ZipCode=@ZipCode " +
-                        "WHERE CustomerID=@CustomerID";
+                        "Name=:Name,Address=:Address,City=:City,State=:State,ZipCode=:ZipCode " +
+                        "WHERE CustomerID=:CustomerID";
 
-                        SqlCommand command = new SqlCommand(update, connection);
+                        OracleCommand command = new OracleCommand(update, connection);
                         //Como tiene parametros el SQL, hay que crear, agregar y enviar
                         //los valores para los parametros.
-                        command.Parameters.Add("@Name", SqlDbType.VarChar, 100).Value = txtNombre.Text;
-                        command.Parameters.Add("@Address", SqlDbType.VarChar, 50).Value = txtDireccion.Text;
-                        command.Parameters.Add("@City", SqlDbType.VarChar, 20).Value = txtCiudad.Text;
+                        command.Parameters.Add(":Name", OracleDbType.Varchar2, 100).Value = txtNombre.Text;
+                        command.Parameters.Add(":Address", OracleDbType.Varchar2, 50).Value = txtDireccion.Text;
+                        command.Parameters.Add(":City", OracleDbType.Varchar2, 20).Value = txtCiudad.Text;
 
-                        command.Parameters.Add("@State", SqlDbType.Char, 2).Value = cboEstado.SelectedValue.ToString();
+                        command.Parameters.Add(":State", OracleDbType.Char, 2).Value = cboEstado.SelectedValue.ToString();
 
-                        command.Parameters.Add("@ZipCode", SqlDbType.Char, 15).Value = txtCodigoZip.Text;
+                        command.Parameters.Add(":ZipCode", OracleDbType.Char, 15).Value = txtCodigoZip.Text;
 
                         //Parametro para el primary key. El para parametro se envia de la ventana anterior.
-                        command.Parameters.Add("@CustomerID", SqlDbType.Int, 4).Value = FormaMcliente.CustomerID;
+                        command.Parameters.Add(":CustomerID", OracleDbType.Int32, 4).Value = FormaMcliente.CustomerID;
 
                         //Abrir la conexion.
                         connection.Open();

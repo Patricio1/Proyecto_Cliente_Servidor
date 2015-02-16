@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-
+using Oracle.DataAccess.Client;
 using System.Data.SqlClient;//Proveedor SQL Server.
 
 namespace SMC.PresentationLayer
@@ -174,10 +174,11 @@ namespace SMC.PresentationLayer
             ventanaAMcliente.ShowDialog();
         }
         private void BuscarSqlEmbebido() {
-            SqlConnection connection = new SqlConnection();
+            OracleConnection connection = new OracleConnection();
 
             try
             {
+                Conexion.CadenaConexion = "User Id= MMABooks; Password=MMABooks; Data Source=XE";
                 connection.ConnectionString = Conexion.CadenaConexion;
 
                 //Abrir la conexion.
@@ -186,9 +187,9 @@ namespace SMC.PresentationLayer
                 //Preparar el SELECT para recuperar un cliente.
                 string select = "SELECT CustomerID, Name, Address, City, State, ZipCode " +
                                 "FROM Customers " +
-                                "WHERE CustomerID= @CustomerID";
+                                "WHERE CustomerID= :CustomerID";
 
-                SqlCommand command = new SqlCommand(select, connection);
+                OracleCommand command = new OracleCommand(select, connection);
 
                 #region primer metodo
 
@@ -204,13 +205,13 @@ namespace SMC.PresentationLayer
                 #region segundo metodo
 
                 //Crear, agregar el/los y envio el valor el parametro del command (Parameters)
-                command.Parameters.Add("@CustomerID", SqlDbType.Int, 4).Value =
+                command.Parameters.Add(":CustomerID", OracleDbType.Int32, 4).Value =
                                                         Convert.ToInt32(txtIDcliente.Text);//posicion (0)
 
                 #endregion
 
                 //Crear un DataReader para recupera los datos del SELECT.
-                SqlDataReader reader = command.ExecuteReader();//SELECT
+                OracleDataReader reader = command.ExecuteReader();//SELECT
 
                 //Verificar si el reader tiene un registro recuperado.
                 //Read: abre el cursor.
@@ -256,14 +257,14 @@ namespace SMC.PresentationLayer
                 reader.Close();
             }
             //errores de BD.
-            catch (SqlException ex)
+            catch (OracleException ex)
             {
                 //Utilizar la clase para gestionar excepciones.
-                Excepciones.Gestionar(ex);
+               // Excepciones.Gestionar(ex);
 
                 //Mostrar el mensaje personalizado.
                 MessageBox.Show(Excepciones.MensajePersonalizado,
-                    "Error de SQL Server",
+                    "Error de Oracle Server",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
 
@@ -404,11 +405,11 @@ namespace SMC.PresentationLayer
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-           // BuscarSqlEmbebido();
-            //BuscarStoreprocedure();
-            FormaBuscarCustomers buscar = new FormaBuscarCustomers();
-           buscar.MdiParent = this.MdiParent;
-           buscar.Show();
+           BuscarSqlEmbebido();
+           // //BuscarStoreprocedure();
+           // FormaBuscarCustomers buscar = new FormaBuscarCustomers();
+           //buscar.MdiParent = this.MdiParent;
+           //buscar.Show();
 
         }
 
@@ -419,7 +420,7 @@ namespace SMC.PresentationLayer
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection();
+           OracleConnection connection = new OracleConnection();
 
             try
             {
@@ -441,13 +442,13 @@ namespace SMC.PresentationLayer
                        //Eliminar el registro indicado
                        //Preparar el SQL para eliminar cliente
                        string delete = "DELETE FROM Customers " +
-                                        "WHERE CustomerID= @CustomerID";
+                                        "WHERE CustomerID= :CustomerID";
 
                        //Preparar el command
-                       SqlCommand command = new SqlCommand(delete,connection);
+                       OracleCommand command = new OracleCommand(delete,connection);
 
                        //Crear, agregar, ennviar el valor´para el parametro
-                       command.Parameters.Add("@CustomerID", SqlDbType.Int, 4).Value = Convert.ToInt32(txtIDcliente.Text);
+                       command.Parameters.Add(":CustomerID", OracleDbType.Int32, 4).Value = Convert.ToInt32(txtIDcliente.Text);
                        connection.Open();
                        //ejecutar el sql
                        int cantidad = command.ExecuteNonQuery();

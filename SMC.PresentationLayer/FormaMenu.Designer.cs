@@ -36,6 +36,7 @@
             this.mnuMantenimiento = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuClientes = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProductos = new System.Windows.Forms.ToolStripMenuItem();
+            this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEstados = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuOpcionesOrdenes = new System.Windows.Forms.ToolStripMenuItem();
@@ -118,6 +119,7 @@
             this.mnuMantenimiento.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuClientes,
             this.mnuProductos,
+            this.empleadosToolStripMenuItem,
             this.mnuEstados,
             this.toolStripMenuItem3,
             this.mnuOpcionesOrdenes});
@@ -142,6 +144,14 @@
             this.mnuProductos.Name = "mnuProductos";
             this.mnuProductos.Size = new System.Drawing.Size(201, 38);
             this.mnuProductos.Text = "&Productos";
+            this.mnuProductos.Click += new System.EventHandler(this.mnuProductos_Click);
+            // 
+            // empleadosToolStripMenuItem
+            // 
+            this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
+            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(201, 38);
+            this.empleadosToolStripMenuItem.Text = "E&mpleados";
+            this.empleadosToolStripMenuItem.Click += new System.EventHandler(this.empleadosToolStripMenuItem_Click);
             // 
             // mnuEstados
             // 
@@ -409,5 +419,6 @@
         private System.Windows.Forms.ToolStripButton tsbOpciones;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton tsbIndice;
+        private System.Windows.Forms.ToolStripMenuItem empleadosToolStripMenuItem;
     }
 }

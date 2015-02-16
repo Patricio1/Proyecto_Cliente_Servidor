@@ -16,6 +16,7 @@ namespace SMC.PresentationLayer
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormaIngreso());           
+        //SMC.PresentationLayer.Formularios_mantenimiento.FormaMempleado
         }
     }
 }

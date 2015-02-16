@@ -215,8 +215,8 @@ namespace SMC.PresentationLayer
             this.dgvDatos.Size = new System.Drawing.Size(651, 150);
             this.dgvDatos.TabIndex = 3;
             this.dgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick);
-            this.dgvDatos.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentDoubleClick);
-            this.dgvDatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellDoubleClick);
+       
+         
             // 
             // FormaBuscarCustomers
             // 

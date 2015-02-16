@@ -6,7 +6,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-using System.Data.SqlClient;//Proveedor nativo para: SQL Server.
+
+using Oracle.DataAccess.Client;
 
 namespace SMC.PresentationLayer
 {
@@ -33,22 +34,26 @@ namespace SMC.PresentationLayer
             //en el DataGridView.
 
             //1.-Crear-instanciar y configurar un objeto: Connection.
-            SqlConnection connection = new SqlConnection();
+            OracleConnection connection = new OracleConnection();
+           // String ora_connect = "User Id= MMABooks; Password=MMABooks; Data Source=XE";
+            Conexion.CadenaConexion = "User Id= MMABooks; Password=MMABooks; Data Source=XE";
+            connection.ConnectionString = Conexion.CadenaConexion;
 
             try
             {
                 //connection.ConnectionString = "Data Source=(local);Initial Catalog=MMABooks;User ID=sa;Password=sa";
-                connection.ConnectionString = Conexion.CadenaConexion;//get
+               
+               // connection.ConnectionString = Conexion.CadenaConexion;//get
 
                 //Abrir la conexion.
                 //connection.Open();//ConnectionString
 
                 //2.-Crear y configurar un DataAdapter
                 //tiene 4 objecto de tipo: Comand. SELECT, INSERT, DELETE, UPDATE
-                SqlDataAdapter adapter = new SqlDataAdapter();
+                OracleDataAdapter adapter = new OracleDataAdapter();
 
                 //Crear y un configurar: Command
-                SqlCommand command = new SqlCommand();
+                OracleCommand command = new OracleCommand();
                 //command.CommandText = "SELECT * FROM States";
                 command.CommandText = "SELECT StateCode, StateName FROM States";
                 command.CommandType = CommandType.Text;
@@ -84,10 +89,10 @@ namespace SMC.PresentationLayer
                 dgvDatos.DataMember = "States";//mostrar la tabla: States
 
             }//errores de BD.
-            catch (SqlException ex)
+            catch (OracleException ex)
             {
                 //Utilizar la clase para gestionar excepciones.
-                Excepciones.Gestionar(ex);
+               // Excepciones.Gestionar(ex);
 
                 //Mostrar el mensaje personalizado.
                 MessageBox.Show(Excepciones.MensajePersonalizado,
@@ -125,7 +130,7 @@ namespace SMC.PresentationLayer
             //en el DataGridView.
 
             //1.-Crear-instanciar y configurar un objeto: Connection.
-            SqlConnection connection = new SqlConnection();
+            OracleConnection connection = new OracleConnection();
 
             try
             {
@@ -137,30 +142,16 @@ namespace SMC.PresentationLayer
 
                 //2.-Crear y configurar un DataAdapter
                 //tiene 4 objecto de tipo: Comand. SELECT, INSERT, DELETE, UPDATE
-                SqlDataAdapter adapter = new SqlDataAdapter();
+                OracleDataAdapter adapter = new OracleDataAdapter();
 
                 #region Insert 
                 //Crear y un configurar los Command
                 //INSERT
-                SqlCommand commandInsert = new SqlCommand();
+                OracleCommand commandInsert = new OracleCommand();
 
-                string codigo = "XA";
-                string nombre = "Tungurahua";
-
-                //Preparar INSERT   
-                //INSERT DIRECTO
-                //commandInsert.CommandText = "INSERT INTO States (StateCode, StateName) VALUES ('1', 'Tungurahua')";
-                //INSERT CON PARAMETROS. SQL Inyection
-                //commandInsert.CommandText = "INSERT INTO States (StateCode, StateName) VALUES ('"+codigo+"', '"+nombre+"')";
-
-                //INSERT CON PARAMETROS. 
-                //commandInsert.CommandText = "INSERT INTO States (StateCode, StateName) VALUES (?, ?)";//Oledb
-                //commandInsert.CommandText = "INSERT INTO States (StateCode, StateName) VALUES (:x, :y)";//Oracle
-                //commandInsert.CommandText = "INSERT INTO States (StateCode, StateName) VALUES (:x, :y)";//Posgresql
-                //commandInsert.CommandText = "INSERT INTO States (StateCode, StateName) VALUES (?x,?y)";//Oracle
 
                 //INSERT CON PARAMETROS EN SQL SERVER
-                commandInsert.CommandText = "INSERT INTO States (StateCode, StateName) VALUES (@StateCode, @StateName)";//Sql Server.
+                commandInsert.CommandText = "INSERT INTO States (StateCode, StateName) VALUES (:StateCode, :StateName)";//Sql Server.
                 commandInsert.CommandType = CommandType.Text;
                 commandInsert.Connection = connection;
 
@@ -172,26 +163,22 @@ namespace SMC.PresentationLayer
                 //    ANTES DE EJECUTAR EL SQL.
 
                 //1.- Crear el o los parametros.
-                SqlParameter parametro1 = new SqlParameter();
-                parametro1.ParameterName = "@StateCode";
-                parametro1.SqlDbType = SqlDbType.Char;
+               OracleParameter parametro1 = new OracleParameter();
+                parametro1.ParameterName = ":StateCode";
+                parametro1.OracleDbType = OracleDbType.Char;
                 parametro1.Size = 2;                
                 //solo para el caso en el que valor del parametro se tome 
                 //de una celda del DataGridView
                 parametro1.SourceColumn = "StateCode";
 
-                SqlParameter parametro2 = new SqlParameter("@StateName", SqlDbType.VarChar, 20, "StateName");
+                OracleParameter parametro2 = new OracleParameter(":StateName", OracleDbType.Varchar2, 20, "StateName");
 
                 //2.- Hay que agregar el o los parametros a la coleccion de parametros
                 //    (Parameters) del Command.
                 commandInsert.Parameters.Add(parametro1);//posicion (0)
                 commandInsert.Parameters.Add(parametro2);//posicion (1)
 
-                //3.- Enviar los valores para cada parametro
-                //commandInsert.Parameters[0].Value = "TU";
-                //commandInsert.Parameters["@StateCode"].Value = "TU";
-                //commandInsert.Parameters[1].Value = "Tungurahua";
-                //commandInsert.Parameters["@StateName"].Value = "Tungurahua";
+              
 
                 //    NOTA: En el caso del DataGridView que esta vinculado al DataSet
                 //          no hace falta enviar los valores para los parametros, porque
@@ -201,36 +188,33 @@ namespace SMC.PresentationLayer
 
                 #region Delete
 
-                //Crear y configuar los Command para el DELETE y el UPDATE
-                SqlCommand commandDelete = new SqlCommand();
+                ////Crear y configuar los Command para el DELETE y el UPDATE
+                OracleCommand commandDelete = new OracleCommand();
                 //Preparar el SQL
                 string delete = "DELETE FROM States " +
-                                "WHERE StateCode= @StateCode";
+                                "WHERE StateCode= :StateCode";
                 commandDelete.CommandText = delete;
                 commandDelete.CommandType = CommandType.Text;
                 commandDelete.Connection = connection;
                 //Como tiene parametros el SQL.
                 //1, 2 - Crear y agregar el o los parametros.
-                commandDelete.Parameters.Add("@StateCode", SqlDbType.Char, 2, "StateCode");//parameter1
+                commandDelete.Parameters.Add(":StateCode", OracleDbType.Char, 2, "StateCode");//parameter1
                 //3.- Enviar los valores para cada parametro
                 //commandDelete.Parameters.Add("@StateCode", SqlDbType.Char, 2).Value = "XA";//parameter1
 
-                #endregion
+                //#endregion
 
-                #region Update
+                //#region Update
 
-                //Crear un configurar un Command (UPDATE)
-                string update = "UPDATE States SET StateName=@StateName WHERE StateCode=@StateCode";
-                //SqlCommand commandUpdate = new SqlCommand();
-                //commandUpdate.CommandText = update;
-                //commandUpdate.CommandType = CommandType.Text;
-                //commandUpdate.Connection = connection;
+                ////Crear un configurar un Command (UPDATE)
+                string update = "UPDATE States SET StateName=:StateName WHERE StateCode=:StateCode";
+               
 
-                SqlCommand commandUpdate = new SqlCommand(update, connection);
+                OracleCommand commandUpdate = new OracleCommand(update, connection);
                 //Como tiene parametros el SQL.
                 //1, 2 - Crear y agregar el o los parametros al objeto Command
-                commandUpdate.Parameters.Add("@StateName", SqlDbType.VarChar, 20, "StateName");
-                commandUpdate.Parameters.Add("@StateCode", SqlDbType.Char, 2, "StateCode");
+                commandUpdate.Parameters.Add(":StateName", OracleDbType.Varchar2, 20, "StateName");
+                commandUpdate.Parameters.Add(":StateCode", OracleDbType.Char, 2, "StateCode");
 
                 #endregion
 
@@ -251,8 +235,6 @@ namespace SMC.PresentationLayer
                 //temporal = _datos.Copy();
                 temporal.Merge(_datos);//copia la estructuras pero solo con los modificados.
 
-                //adapter.Fill(_datos, "States");
-                //adapter.Update(_datos, "States");
                 adapter.Update(temporal, "States");
 
                 _datos.Clear();
@@ -271,10 +253,10 @@ namespace SMC.PresentationLayer
                 
                 MessageBox.Show("Datos actualizados", "states");
             }//errores de BD.
-            catch (SqlException ex)
+            catch (OracleException ex)
             {
                 //Utilizar la clase para gestionar excepciones.
-                Excepciones.Gestionar(ex);
+                //Excepciones.Gestionar(ex);
 
                 //Mostrar el mensaje personalizado.
                 MessageBox.Show(Excepciones.MensajePersonalizado,
@@ -299,6 +281,11 @@ namespace SMC.PresentationLayer
                 //Liberar memoria.
                 connection.Dispose();
             }
+        }
+
+        private void dgvDatos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

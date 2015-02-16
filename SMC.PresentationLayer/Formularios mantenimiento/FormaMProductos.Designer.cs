@@ -1,6 +1,6 @@
-﻿namespace SMC.PresentationLayer
+﻿namespace SMC.PresentationLayer.Formularios_mantenimiento
 {
-    partial class FormaEstados
+    partial class FormaMProductos
     {
         /// <summary>
         /// Variable del diseñador requerida.
@@ -28,52 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvDatos = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
+            this.dgvProductos = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(126, 236);
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(21, 236);
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // lblTitulo
             // 
-            this.lblTitulo.Size = new System.Drawing.Size(378, 36);
-            this.lblTitulo.Text = "Estados";
+            this.lblTitulo.Text = "Productos";
             // 
-            // dgvDatos
+            // dgvProductos
             // 
-            this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDatos.Location = new System.Drawing.Point(21, 49);
-            this.dgvDatos.Name = "dgvDatos";
-            this.dgvDatos.Size = new System.Drawing.Size(321, 169);
-            this.dgvDatos.TabIndex = 19;
-            this.dgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick);
+            this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProductos.Location = new System.Drawing.Point(31, 55);
+            this.dgvProductos.Name = "dgvProductos";
+            this.dgvProductos.Size = new System.Drawing.Size(458, 168);
+            this.dgvProductos.TabIndex = 19;
             // 
-            // FormaEstados
+            // FormaMProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(378, 287);
-            this.Controls.Add(this.dgvDatos);
-            this.Name = "FormaEstados";
-            this.Text = "Formulario: Estados";
-            this.Load += new System.EventHandler(this.FormaEstados_Load);
+            this.ClientSize = new System.Drawing.Size(521, 287);
+            this.Controls.Add(this.dgvProductos);
+            this.Name = "FormaMProductos";
+            this.Load += new System.EventHandler(this.FormaMProductos_Load);
             this.Controls.SetChildIndex(this.btnGuardar, 0);
             this.Controls.SetChildIndex(this.btnCancelar, 0);
             this.Controls.SetChildIndex(this.lblTitulo, 0);
-            this.Controls.SetChildIndex(this.dgvDatos, 0);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
+            this.Controls.SetChildIndex(this.dgvProductos, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvDatos;
+        private System.Windows.Forms.DataGridView dgvProductos;
     }
 }

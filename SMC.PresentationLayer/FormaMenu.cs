@@ -56,5 +56,19 @@ namespace SMC.PresentationLayer
                         "     con el usuario: " +
                         Conexion.Usuario;
         }
+
+        private void empleadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SMC.PresentationLayer.Formularios_mantenimiento.FormaMempleado empleado = new SMC.PresentationLayer.Formularios_mantenimiento.FormaMempleado();
+            empleado.MdiParent = this;
+            empleado.Show();
+        }
+
+        private void mnuProductos_Click(object sender, EventArgs e)
+        {
+            SMC.PresentationLayer.Formularios_mantenimiento.FormaMProductos productos = new SMC.PresentationLayer.Formularios_mantenimiento.FormaMProductos();
+            productos.MdiParent = this;
+            productos.Show();
+        }
     }
 }
