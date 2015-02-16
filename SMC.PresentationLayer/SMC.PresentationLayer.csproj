@@ -81,6 +81,12 @@
     <Compile Include="Formularios mantenimiento\FormaMempleado.designer.cs">
       <DependentUpon>FormaMempleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios mantenimiento\FormaMFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios mantenimiento\FormaMFactura.Designer.cs">
+      <DependentUpon>FormaMFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios mantenimiento\FormaMProductos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,12 @@
     <Compile Include="Formularios modificacion\FormaAMempleado.Designer.cs">
       <DependentUpon>FormaAMempleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios modificacion\FormaAMFacturaDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios modificacion\FormaAMFacturaDetalle.Designer.cs">
+      <DependentUpon>FormaAMFacturaDetalle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FormaIngreso.cs">
@@ -151,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios mantenimiento\FormaMempleado.resx">
       <DependentUpon>FormaMempleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios mantenimiento\FormaMFactura.resx">
+      <DependentUpon>FormaMFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios mantenimiento\FormaMProductos.resx">
       <DependentUpon>FormaMProductos.cs</DependentUpon>
@@ -175,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios modificacion\FormaAMempleado.resx">
       <DependentUpon>FormaAMempleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios modificacion\FormaAMFacturaDetalle.resx">
+      <DependentUpon>FormaAMFacturaDetalle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

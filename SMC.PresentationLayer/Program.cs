@@ -15,7 +15,8 @@ namespace SMC.PresentationLayer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormaIngreso());           
+           Application.Run(new SMC.PresentationLayer.Formularios_mantenimiento.FormaMFactura());
+            
         //SMC.PresentationLayer.Formularios_mantenimiento.FormaMempleado
         }
     }
