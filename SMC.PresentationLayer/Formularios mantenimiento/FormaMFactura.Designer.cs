@@ -42,6 +42,7 @@
             this.txtEnvio = new System.Windows.Forms.TextBox();
             this.txtFacturaTotal = new System.Windows.Forms.TextBox();
             this.txtFecha = new System.Windows.Forms.DateTimePicker();
+            this.btnVerFactura = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnBuscar
@@ -51,16 +52,17 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(172, 272);
+            this.btnModificar.Location = new System.Drawing.Point(168, 272);
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(277, 272);
+            this.btnEliminar.Location = new System.Drawing.Point(273, 272);
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(67, 272);
+            this.btnAgregar.Location = new System.Drawing.Point(63, 272);
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // lblTitulo
@@ -70,7 +72,8 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(382, 272);
+            this.btnSalir.Location = new System.Drawing.Point(380, 272);
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // label6
             // 
@@ -197,10 +200,27 @@
             this.txtFecha.Size = new System.Drawing.Size(299, 20);
             this.txtFecha.TabIndex = 38;
             // 
+            // btnVerFactura
+            // 
+            this.btnVerFactura.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnVerFactura.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVerFactura.Enabled = false;
+            this.btnVerFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerFactura.Image = global::SMC.PresentationLayer.Properties.Resources.cuenta_icono_6432;
+            this.btnVerFactura.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVerFactura.Location = new System.Drawing.Point(168, 272);
+            this.btnVerFactura.Name = "btnVerFactura";
+            this.btnVerFactura.Size = new System.Drawing.Size(105, 39);
+            this.btnVerFactura.TabIndex = 73;
+            this.btnVerFactura.Text = "       &Ver Factura";
+            this.btnVerFactura.UseVisualStyleBackColor = false;
+            this.btnVerFactura.Click += new System.EventHandler(this.btnVerFactura_Click);
+            // 
             // FormaMFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(539, 319);
+            this.Controls.Add(this.btnVerFactura);
             this.Controls.Add(this.txtFecha);
             this.Controls.Add(this.txtFacturaTotal);
             this.Controls.Add(this.txtEnvio);
@@ -237,6 +257,7 @@
             this.Controls.SetChildIndex(this.txtEnvio, 0);
             this.Controls.SetChildIndex(this.txtFacturaTotal, 0);
             this.Controls.SetChildIndex(this.txtFecha, 0);
+            this.Controls.SetChildIndex(this.btnVerFactura, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,5 +279,6 @@
         public System.Windows.Forms.TextBox txtEnvio;
         public System.Windows.Forms.TextBox txtFacturaTotal;
         private System.Windows.Forms.DateTimePicker txtFecha;
+        protected System.Windows.Forms.Button btnVerFactura;
     }
 }

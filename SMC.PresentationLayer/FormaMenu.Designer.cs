@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormaMenu));
             this.mnuMenuPrincipal = new System.Windows.Forms.MenuStrip();
             this.mnuSistema = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCambiarClave = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,6 +39,7 @@
             this.mnuProductos = new System.Windows.Forms.ToolStripMenuItem();
             this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEstados = new System.Windows.Forms.ToolStripMenuItem();
+            this.facturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuOpcionesOrdenes = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProcesos = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,6 +64,7 @@
             this.tsbOpciones = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbIndice = new System.Windows.Forms.ToolStripButton();
+            this.skinEngine1 = new Sunisoft.IrisSkin.SkinEngine(((System.ComponentModel.Component)(this)));
             this.mnuMenuPrincipal.SuspendLayout();
             this.tsBarraHerramientas.SuspendLayout();
             this.SuspendLayout();
@@ -121,6 +124,7 @@
             this.mnuProductos,
             this.empleadosToolStripMenuItem,
             this.mnuEstados,
+            this.facturasToolStripMenuItem,
             this.toolStripMenuItem3,
             this.mnuOpcionesOrdenes});
             this.mnuMantenimiento.Name = "mnuMantenimiento";
@@ -161,6 +165,13 @@
             this.mnuEstados.Text = "&Estados";
             this.mnuEstados.Click += new System.EventHandler(this.mnuEstados_Click);
             // 
+            // facturasToolStripMenuItem
+            // 
+            this.facturasToolStripMenuItem.Name = "facturasToolStripMenuItem";
+            this.facturasToolStripMenuItem.Size = new System.Drawing.Size(201, 38);
+            this.facturasToolStripMenuItem.Text = "&Facturas";
+            this.facturasToolStripMenuItem.Click += new System.EventHandler(this.facturasToolStripMenuItem_Click);
+            // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
@@ -173,6 +184,7 @@
             this.mnuOpcionesOrdenes.Name = "mnuOpcionesOrdenes";
             this.mnuOpcionesOrdenes.Size = new System.Drawing.Size(201, 38);
             this.mnuOpcionesOrdenes.Text = "&Opciones de órdenes";
+            this.mnuOpcionesOrdenes.Click += new System.EventHandler(this.mnuOpcionesOrdenes_Click);
             // 
             // mnuProcesos
             // 
@@ -181,6 +193,7 @@
             this.mnuProcesos.Name = "mnuProcesos";
             this.mnuProcesos.Size = new System.Drawing.Size(66, 20);
             this.mnuProcesos.Text = "&Procesos";
+            this.mnuProcesos.Click += new System.EventHandler(this.mnuProcesos_Click);
             // 
             // mnuOrdenes
             // 
@@ -270,6 +283,7 @@
             this.tsBarraHerramientas.Size = new System.Drawing.Size(516, 39);
             this.tsBarraHerramientas.TabIndex = 2;
             this.tsBarraHerramientas.Text = "toolStrip1";
+            this.tsBarraHerramientas.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsBarraHerramientas_ItemClicked);
             // 
             // tsbCambiarClave
             // 
@@ -306,6 +320,7 @@
             this.tsbProductos.Name = "tsbProductos";
             this.tsbProductos.Size = new System.Drawing.Size(28, 36);
             this.tsbProductos.Text = "Productos";
+            this.tsbProductos.Click += new System.EventHandler(this.tsbProductos_Click);
             // 
             // tsbOpcionesOrdenes
             // 
@@ -316,6 +331,7 @@
             this.tsbOpcionesOrdenes.Name = "tsbOpcionesOrdenes";
             this.tsbOpcionesOrdenes.Size = new System.Drawing.Size(36, 36);
             this.tsbOpcionesOrdenes.Text = "Opciones de órdenes";
+            this.tsbOpcionesOrdenes.Click += new System.EventHandler(this.tsbOpcionesOrdenes_Click);
             // 
             // toolStripSeparator2
             // 
@@ -361,6 +377,13 @@
             this.tsbIndice.Name = "tsbIndice";
             this.tsbIndice.Size = new System.Drawing.Size(36, 36);
             this.tsbIndice.Text = "Indice";
+            // 
+            // skinEngine1
+            // 
+            this.skinEngine1.SerialNumber = "U4N2UjLguUZs33UR+Vy47JAZ81t2fjIFvut28vc5oHiVeivGb/NZMA==";
+            this.skinEngine1.SkinFile = "C:\\Users\\acer\\Desktop\\archivosVI\\borrar\\Nueva carpeta\\Proyecto_Cliente_Servidor\\S" +
+                "KIN NET 2010 WIN 7\\SkinVS.NET\\Glass\\GlassGreen.ssk";
+            this.skinEngine1.SkinStreamMain = ((System.IO.Stream)(resources.GetObject("skinEngine1.SkinStreamMain")));
             // 
             // FormaMenu
             // 
@@ -420,5 +443,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton tsbIndice;
         private System.Windows.Forms.ToolStripMenuItem empleadosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem facturasToolStripMenuItem;
+        private Sunisoft.IrisSkin.SkinEngine skinEngine1;
     }
 }

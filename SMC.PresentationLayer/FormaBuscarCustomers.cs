@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Oracle.DataAccess.Client;
+using SMC.BusinessObjects;
 
 
 namespace SMC.PresentationLayer
@@ -16,14 +17,26 @@ namespace SMC.PresentationLayer
         public delegate void enviar(String mensaje);
         public event enviar eventoUno;
         public static FormaBuscarCustomers forma = new FormaBuscarCustomers();
+        public static int indiceVentanaCustomer = 0;
+        int valor;
+        Validaciones ClaseValidar;
         public FormaBuscarCustomers()
         {
             InitializeComponent();
             _dataViewCustomes = new DataView();
+            ClaseValidar = new Validaciones();
         }
 
+        public FormaBuscarCustomers(int identificador)
+        {
+            this.valor = identificador;
+            InitializeComponent();
+            _dataViewCustomes = new DataView();
+            ClaseValidar = new Validaciones();
+        }
         private void FormaBuscarCustomers_Load(object sender, EventArgs e)
         {
+            this.Location = new Point(628, 100);
             OracleConnection connection = new OracleConnection();
              //Conexion.CadenaConexion = connection.ConnectionString;
 
@@ -31,7 +44,7 @@ namespace SMC.PresentationLayer
             connection.ConnectionString = Conexion.CadenaConexion;
 
              
-             String select = "SELECT CustomerID,Name,Address,City,State " +
+             String select = "SELECT CustomerID,Name,Address,City,State,ZipCode " +
                           "FROM Customers";
              OracleCommand command = new OracleCommand(select, connection);
 
@@ -177,14 +190,54 @@ namespace SMC.PresentationLayer
         {
             try
             {
-                String IDValor = (dgvDatos.Rows[e.RowIndex].Cells["Name"].Value.ToString());
+                if (valor == 1)
+                {
+                    String IDValor = (dgvDatos.Rows[e.RowIndex].Cells["CUSTOMERID"].Value.ToString());
+                    String nombre = (dgvDatos.Rows[e.RowIndex].Cells["NAME"].Value.ToString());
+                    SMC.PresentationLayer.Formularios_modificacion.FormaDetalleFactura detalle = (SMC.PresentationLayer.Formularios_modificacion.FormaDetalleFactura)Application.OpenForms[2];
+                    detalle.ID_Cliente = IDValor; 
+                    //pasamos el nombre de cliente al formulario de factura
+                    detalle.cliente = nombre;
+                }
+                else if (valor == 2)
+                {
+                    
+                    String nombre = (dgvDatos.Rows[e.RowIndex].Cells["NAME"].Value.ToString());
+                    String id = (dgvDatos.Rows[e.RowIndex].Cells["CUSTOMERID"].Value.ToString());
+                    String direccion = (dgvDatos.Rows[e.RowIndex].Cells["ADDRESS"].Value.ToString());
+                    String ciudad = (dgvDatos.Rows[e.RowIndex].Cells["CITY"].Value.ToString());
+                    String estado = (dgvDatos.Rows[e.RowIndex].Cells["STATE"].Value.ToString());
+                    String codezip = (dgvDatos.Rows[e.RowIndex].Cells["ZIPCODE"].Value.ToString());
+                    FormaMcliente customer = (FormaMcliente)Application.OpenForms[2];
+                   
+                    customer.txtNombre.Text = nombre;
+                    customer.txtIDcliente.Text = id;
+                    customer.txtDireccion.Text = direccion;
+                    customer.txtCiudad.Text = ciudad;
+                    customer.txtEstado.Text = estado;
+                    customer.txtCodigoZip.Text = codezip;
 
-
+                    customer.btnUpdate.Enabled = true;
+                    customer.btnDelete.Enabled = true;
+                    
+                }
                 
             }
             catch(Exception ex){
                 MessageBox.Show("ERROR","CUSTOMER",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
+
+        private void txtIdCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ClaseValidar.validar(sender,e,1,txtIdCliente);
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ClaseValidar.validar(sender, e, 2, txtNombre);
+        }
+
+      
     }
 }

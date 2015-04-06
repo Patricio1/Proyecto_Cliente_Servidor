@@ -103,6 +103,7 @@ namespace SMC.PresentationLayer
             // 
             // cboEstado
             // 
+            this.cboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEstado.FormattingEnabled = true;
             this.cboEstado.Location = new System.Drawing.Point(80, 97);
             this.cboEstado.Name = "cboEstado";
@@ -122,10 +123,12 @@ namespace SMC.PresentationLayer
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(80, 66);
+            this.txtNombre.MaxLength = 100;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(162, 20);
             this.txtNombre.TabIndex = 3;
             this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // label2
             // 
@@ -139,9 +142,11 @@ namespace SMC.PresentationLayer
             // txtIdCliente
             // 
             this.txtIdCliente.Location = new System.Drawing.Point(80, 40);
+            this.txtIdCliente.MaxLength = 6;
             this.txtIdCliente.Name = "txtIdCliente";
             this.txtIdCliente.Size = new System.Drawing.Size(100, 20);
             this.txtIdCliente.TabIndex = 1;
+            this.txtIdCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIdCliente_KeyPress);
             // 
             // label1
             // 
@@ -163,6 +168,7 @@ namespace SMC.PresentationLayer
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ordenar por:";
+            this.groupBox2.Visible = false;
             // 
             // rdbDescendente
             // 
@@ -212,11 +218,10 @@ namespace SMC.PresentationLayer
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDatos.Location = new System.Drawing.Point(25, 205);
             this.dgvDatos.Name = "dgvDatos";
+            this.dgvDatos.ReadOnly = true;
             this.dgvDatos.Size = new System.Drawing.Size(651, 150);
             this.dgvDatos.TabIndex = 3;
             this.dgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick);
-       
-         
             // 
             // FormaBuscarCustomers
             // 
@@ -230,6 +235,8 @@ namespace SMC.PresentationLayer
             this.MinimizeBox = false;
             this.Name = "FormaBuscarCustomers";
             this.Text = "Buscar Customers";
+            //this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormaBuscarCustomers_FormClosing);
+            //this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormaBuscarCustomers_FormClosed);
             this.Load += new System.EventHandler(this.FormaBuscarCustomers_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

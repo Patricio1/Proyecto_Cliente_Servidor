@@ -43,6 +43,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Location = new System.Drawing.Point(159, 205);
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -57,34 +58,42 @@
             // txtCodigoPostal
             // 
             this.txtCodigoPostal.Location = new System.Drawing.Point(362, 143);
+            this.txtCodigoPostal.MaxLength = 10;
             this.txtCodigoPostal.Name = "txtCodigoPostal";
             this.txtCodigoPostal.Size = new System.Drawing.Size(75, 20);
             this.txtCodigoPostal.TabIndex = 28;
             this.txtCodigoPostal.Tag = "Zip code";
+            this.txtCodigoPostal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoPostal_KeyPress);
             // 
             // txtTitulo
             // 
             this.txtTitulo.Location = new System.Drawing.Point(137, 117);
+            this.txtTitulo.MaxLength = 30;
             this.txtTitulo.Name = "txtTitulo";
             this.txtTitulo.Size = new System.Drawing.Size(300, 20);
             this.txtTitulo.TabIndex = 24;
             this.txtTitulo.Tag = "City";
+            this.txtTitulo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTitulo_KeyPress);
             // 
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(137, 91);
+            this.txtNombre.MaxLength = 10;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(300, 20);
             this.txtNombre.TabIndex = 22;
             this.txtNombre.Tag = "Address";
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // txtApellido
             // 
             this.txtApellido.Location = new System.Drawing.Point(137, 65);
+            this.txtApellido.MaxLength = 20;
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(300, 20);
             this.txtApellido.TabIndex = 20;
             this.txtApellido.Tag = "Name";
+            this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
             // 
             // label2
             // 

@@ -55,6 +55,8 @@ namespace SMC.PresentationLayer
                         Conexion.BaseDatos + 
                         "     con el usuario: " +
                         Conexion.Usuario;
+            BusquedasPersonalizadas.FormaBuscarProducto.indiceVentanaProducto += 1;
+            FormaBuscarCustomers.indiceVentanaCustomer += 1;
         }
 
         private void empleadosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -69,6 +71,49 @@ namespace SMC.PresentationLayer
             SMC.PresentationLayer.Formularios_mantenimiento.FormaMProductos productos = new SMC.PresentationLayer.Formularios_mantenimiento.FormaMProductos();
             productos.MdiParent = this;
             productos.Show();
+        }
+
+        private void tsbProductos_Click(object sender, EventArgs e)
+        {
+            SMC.PresentationLayer.Formularios_mantenimiento.FormaMProductos productos = new SMC.PresentationLayer.Formularios_mantenimiento.FormaMProductos();
+            productos.MdiParent = this;
+            productos.Show();
+        }
+
+        private void facturasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SMC.PresentationLayer.Formularios_mantenimiento.FormaMFactura factura = new SMC.PresentationLayer.Formularios_mantenimiento.FormaMFactura();
+            factura.MdiParent = this;
+            factura.Show();
+        }
+
+        private void mnuOpcionesOrdenes_Click(object sender, EventArgs e)
+        {
+            SMC.PresentationLayer.Formularios_mantenimiento.OrderOptions ordenes = new SMC.PresentationLayer.Formularios_mantenimiento.OrderOptions();
+            ordenes.MdiParent = this;
+            ordenes.Show();
+        }
+
+        private void tsbOpcionesOrdenes_Click(object sender, EventArgs e)
+        {
+            SMC.PresentationLayer.Formularios_mantenimiento.OrderOptions ordenes = new SMC.PresentationLayer.Formularios_mantenimiento.OrderOptions();
+            ordenes.MdiParent = this;
+            ordenes.Show();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsBarraHerramientas_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void mnuProcesos_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

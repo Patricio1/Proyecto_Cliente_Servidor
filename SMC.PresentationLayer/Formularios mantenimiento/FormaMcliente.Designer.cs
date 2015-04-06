@@ -40,6 +40,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtIDcliente = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnAñadir = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+           // this.txtCodigoZip = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnBuscar
@@ -51,18 +55,16 @@
             // btnModificar
             // 
             this.btnModificar.Location = new System.Drawing.Point(130, 268);
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
             this.btnEliminar.Location = new System.Drawing.Point(235, 268);
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnAgregar
             // 
             this.btnAgregar.Location = new System.Drawing.Point(25, 268);
             this.btnAgregar.TabIndex = 13;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.btnAgregar.Visible = false;
             // 
             // lblTitulo
             // 
@@ -73,6 +75,7 @@
             // btnSalir
             // 
             this.btnSalir.Location = new System.Drawing.Point(339, 268);
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // txtCodigoZip
             // 
@@ -82,6 +85,7 @@
             this.txtCodigoZip.Size = new System.Drawing.Size(75, 20);
             this.txtCodigoZip.TabIndex = 12;
             this.txtCodigoZip.TabStop = false;
+          //  this.txtCodigoZip.TextChanged += new System.EventHandler(this.txtCodigoZip_TextChanged);
             // 
             // label6
             // 
@@ -168,10 +172,12 @@
             // txtIDcliente
             // 
             this.txtIDcliente.Location = new System.Drawing.Point(112, 81);
+            this.txtIDcliente.MaxLength = 6;
             this.txtIDcliente.Name = "txtIDcliente";
             this.txtIDcliente.Size = new System.Drawing.Size(50, 20);
             this.txtIDcliente.TabIndex = 1;
             this.txtIDcliente.Tag = "Customer ID";
+            this.txtIDcliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIDcliente_KeyPress);
             // 
             // label1
             // 
@@ -182,12 +188,68 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "&ID cliente:";
             // 
+            // btnAñadir
+            // 
+            this.btnAñadir.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnAñadir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAñadir.Image = global::SMC.PresentationLayer.Properties.Resources.Agregar;
+            this.btnAñadir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAñadir.Location = new System.Drawing.Point(25, 268);
+            this.btnAñadir.Name = "btnAñadir";
+            this.btnAñadir.Size = new System.Drawing.Size(105, 39);
+            this.btnAñadir.TabIndex = 18;
+            this.btnAñadir.Text = "    &Agregar";
+            this.btnAñadir.UseVisualStyleBackColor = false;
+            this.btnAñadir.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnUpdate.Enabled = false;
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Image = global::SMC.PresentationLayer.Properties.Resources.Modificar;
+            this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUpdate.Location = new System.Drawing.Point(130, 268);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(105, 39);
+            this.btnUpdate.TabIndex = 19;
+            this.btnUpdate.Text = "&Modificar";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnDelete.Enabled = false;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Image = global::SMC.PresentationLayer.Properties.Resources.Eliminar;
+            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDelete.Location = new System.Drawing.Point(235, 268);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(105, 39);
+            this.btnDelete.TabIndex = 20;
+            this.btnDelete.Text = "&Eliminar";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // txtCodigoZip
+            // 
+            //this.txtCodigoZip.Location = new System.Drawing.Point(336, 232);
+            //this.txtCodigoZip.Name = "txtCodigoZip";
+            //this.txtCodigoZip.ReadOnly = true;
+            //this.txtCodigoZip.Size = new System.Drawing.Size(100, 20);
+            //this.txtCodigoZip.TabIndex = 21;
+            // 
             // FormaMcliente
             // 
             this.AcceptButton = this.btnBuscar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(460, 319);
             this.Controls.Add(this.txtCodigoZip);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnAñadir);
+           // this.Controls.Add(this.txtCodigoZip);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtEstado);
             this.Controls.Add(this.label5);
@@ -219,6 +281,10 @@
             this.Controls.SetChildIndex(this.txtEstado, 0);
             this.Controls.SetChildIndex(this.label6, 0);
             this.Controls.SetChildIndex(this.txtCodigoZip, 0);
+            this.Controls.SetChildIndex(this.btnAñadir, 0);
+            this.Controls.SetChildIndex(this.btnDelete, 0);
+            this.Controls.SetChildIndex(this.btnUpdate, 0);
+           // this.Controls.SetChildIndex(this.txtCodigoZip, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,5 +304,9 @@
         public System.Windows.Forms.TextBox txtIDcliente;
         public System.Windows.Forms.TextBox txtCodigoZip;
         public System.Windows.Forms.TextBox txtEstado;
+        public System.Windows.Forms.Button btnAñadir;
+        public System.Windows.Forms.Button btnUpdate;
+        public System.Windows.Forms.Button btnDelete;
+      
     }
 }

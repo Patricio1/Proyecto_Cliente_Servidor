@@ -20,11 +20,13 @@ namespace SMC.PresentationLayer
             InitializeComponent();
 
             //Inicializar el DataSet
+           
             _datos = new DataSet();
         }
 
         private void FormaEstados_Load(object sender, EventArgs e)
         {
+            this.Location = new Point(1, 5);
             Recuperar();
         }
 

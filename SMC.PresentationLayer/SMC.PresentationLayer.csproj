@@ -10,9 +10,25 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SMC.PresentationLayer</RootNamespace>
     <AssemblyName>SMC.PresentationLayer</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -34,25 +50,58 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="InputKey">
+      <HintPath>..\InputKey.dll</HintPath>
+    </Reference>
+    <Reference Include="IrisSkin2">
+      <HintPath>..\SKIN NET 2010 WIN 7\SkinVS.NET\IrisSkin2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Oracle.DataAccess, Version=10.2.0.100, Culture=neutral, PublicKeyToken=89b483f429c47342">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\oraclexe\app\oracle\product\10.2.0\server\BIN\Oracle.DataAccess.dll</HintPath>
     </Reference>
+    <Reference Include="SMC.BusinessObjects">
+      <HintPath>..\SMC.BusinessObjects\bin\Debug\SMC.BusinessObjects.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Comun\Conexion.cs" />
-    <Compile Include="Comun\ConexionODBC.cs" />
-    <Compile Include="Comun\Excepciones.cs" />
+    <Compile Include="BusquedasPersonalizadas\FormaBuscarEmployees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusquedasPersonalizadas\FormaBuscarEmployees.designer.cs">
+      <DependentUpon>FormaBuscarEmployees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusquedasPersonalizadas\FormaBuscarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusquedasPersonalizadas\FormaBuscarProducto.Designer.cs">
+      <DependentUpon>FormaBuscarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet1.cs">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios base\Comun\Conexion.cs" />
+    <Compile Include="Formularios base\Comun\ConexionODBC.cs" />
+    <Compile Include="Formularios base\Comun\Excepciones.cs" />
     <Compile Include="DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -92,6 +141,18 @@
     </Compile>
     <Compile Include="Formularios mantenimiento\FormaMProductos.Designer.cs">
       <DependentUpon>FormaMProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios mantenimiento\OrderOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios mantenimiento\OrderOptions.designer.cs">
+      <DependentUpon>OrderOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios modificacion\FormaDetalleFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios modificacion\FormaDetalleFactura.Designer.cs">
+      <DependentUpon>FormaDetalleFactura.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios modificacion\FormaAMcliente.cs">
       <SubType>Form</SubType>
@@ -141,11 +202,11 @@
     <Compile Include="Formularios modificacion\FormaAMempleado.Designer.cs">
       <DependentUpon>FormaAMempleado.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios modificacion\FormaAMFacturaDetalle.cs">
+    <Compile Include="Formularios modificacion\OrderOptionsAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios modificacion\FormaAMFacturaDetalle.Designer.cs">
-      <DependentUpon>FormaAMFacturaDetalle.cs</DependentUpon>
+    <Compile Include="Formularios modificacion\OrderOptionsAgregar.designer.cs">
+      <DependentUpon>OrderOptionsAgregar.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -155,6 +216,55 @@
     <Compile Include="FormaIngreso.Designer.cs">
       <DependentUpon>FormaIngreso.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\ReporteProductos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteProductos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReporteVentas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteVentas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\GestionarReporteDetalleFactura.cs" />
+    <Compile Include="Reportes\ReporteFactura.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteFactura.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\verReporteFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\verReporteFactura.Designer.cs">
+      <DependentUpon>verReporteFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\verReporteProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\verReporteProductos.Designer.cs">
+      <DependentUpon>verReporteProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\verReporteVentasxFecha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\verReporteVentasxFecha.Designer.cs">
+      <DependentUpon>verReporteVentasxFecha.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="BusquedasPersonalizadas\FormaBuscarEmployees.resx">
+      <DependentUpon>FormaBuscarEmployees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusquedasPersonalizadas\FormaBuscarProducto.resx">
+      <DependentUpon>FormaBuscarProducto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormaBuscarCustomers.resx">
       <DependentUpon>FormaBuscarCustomers.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,6 +279,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios mantenimiento\FormaMProductos.resx">
       <DependentUpon>FormaMProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios mantenimiento\OrderOptions.resx">
+      <DependentUpon>OrderOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios modificacion\FormaDetalleFactura.resx">
+      <DependentUpon>FormaDetalleFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios modificacion\FormaAMcliente.resx">
       <DependentUpon>FormaAMcliente.cs</DependentUpon>
@@ -191,8 +307,8 @@
     <EmbeddedResource Include="Formularios modificacion\FormaAMempleado.resx">
       <DependentUpon>FormaAMempleado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios modificacion\FormaAMFacturaDetalle.resx">
-      <DependentUpon>FormaAMFacturaDetalle.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios modificacion\OrderOptionsAgregar.resx">
+      <DependentUpon>OrderOptionsAgregar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -207,7 +323,32 @@
     <EmbeddedResource Include="FormaIngreso.resx">
       <DependentUpon>FormaIngreso.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteProductos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteProductos.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteVentas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteVentas.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteFactura.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteFactura.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\verReporteFactura.resx">
+      <DependentUpon>verReporteFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\verReporteProductos.resx">
+      <DependentUpon>verReporteProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\verReporteVentasxFecha.resx">
+      <DependentUpon>verReporteVentasxFecha.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
@@ -281,6 +422,49 @@
       <Project>{75C97637-3447-4D9A-8E85-91E8855FB2F7}</Project>
       <Name>SMC.DataAccessLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\carrito.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\equipo-editar-icono-6468.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cuenta-icono-6432.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\16 %28File add%29.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono-de-la-factura-10207279.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

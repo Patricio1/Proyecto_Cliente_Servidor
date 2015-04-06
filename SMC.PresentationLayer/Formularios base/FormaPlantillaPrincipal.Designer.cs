@@ -40,6 +40,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormaPlantillaPrincipal";
             this.Text = "Formulario base de la aplicación";
+            this.Load += new System.EventHandler(this.FormaPlantillaPrincipal_Load);
             this.ResumeLayout(false);
 
         }

@@ -15,5 +15,10 @@ namespace SMC.PresentationLayer
         {
             InitializeComponent();
         }
+
+        private void FormaPlantillaPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

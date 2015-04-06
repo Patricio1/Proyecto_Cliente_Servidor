@@ -40,27 +40,27 @@
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtIDempleado = new System.Windows.Forms.TextBox();
             this.txtFecha = new System.Windows.Forms.DateTimePicker();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnInsert = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(232, 59);
+            this.btnBuscar.Location = new System.Drawing.Point(250, 59);
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(147, 268);
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            this.btnModificar.Location = new System.Drawing.Point(126, 268);
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(252, 268);
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            this.btnEliminar.Location = new System.Drawing.Point(231, 268);
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(42, 268);
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.btnAgregar.Location = new System.Drawing.Point(21, 268);
             // 
             // lblTitulo
             // 
@@ -69,7 +69,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(357, 268);
+            this.btnSalir.Location = new System.Drawing.Point(366, 268);
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // label5
@@ -161,11 +161,13 @@
             // txtIDempleado
             // 
             this.txtIDempleado.Location = new System.Drawing.Point(160, 69);
+            this.txtIDempleado.MaxLength = 9;
             this.txtIDempleado.Name = "txtIDempleado";
-            this.txtIDempleado.Size = new System.Drawing.Size(50, 20);
+            this.txtIDempleado.Size = new System.Drawing.Size(71, 20);
             this.txtIDempleado.TabIndex = 23;
             this.txtIDempleado.TabStop = false;
             this.txtIDempleado.Tag = "EmployeeID";
+            this.txtIDempleado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIDempleado_KeyPress);
             // 
             // txtFecha
             // 
@@ -176,10 +178,57 @@
             this.txtFecha.Size = new System.Drawing.Size(200, 20);
             this.txtFecha.TabIndex = 28;
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnUpdate.Enabled = false;
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Image = global::SMC.PresentationLayer.Properties.Resources.Modificar;
+            this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUpdate.Location = new System.Drawing.Point(126, 268);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(105, 39);
+            this.btnUpdate.TabIndex = 30;
+            this.btnUpdate.Text = "&Modificar";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnDelete.Enabled = false;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Image = global::SMC.PresentationLayer.Properties.Resources.Eliminar;
+            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDelete.Location = new System.Drawing.Point(231, 268);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(105, 39);
+            this.btnDelete.TabIndex = 31;
+            this.btnDelete.Text = "&Eliminar";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnInsert
+            // 
+            this.btnInsert.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnInsert.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInsert.Image = global::SMC.PresentationLayer.Properties.Resources.Agregar;
+            this.btnInsert.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInsert.Location = new System.Drawing.Point(21, 268);
+            this.btnInsert.Name = "btnInsert";
+            this.btnInsert.Size = new System.Drawing.Size(105, 39);
+            this.btnInsert.TabIndex = 29;
+            this.btnInsert.Text = "    &Agregar";
+            this.btnInsert.UseVisualStyleBackColor = false;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click_1);
+            // 
             // FormaMempleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(489, 319);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.txtFecha);
             this.Controls.Add(this.txtCodigoPostal);
             this.Controls.Add(this.txtTitulo);
@@ -194,6 +243,9 @@
             this.Controls.Add(this.label1);
             this.Name = "FormaMempleado";
             this.Load += new System.EventHandler(this.FormaMempleado_Load);
+            this.Controls.SetChildIndex(this.btnAgregar, 0);
+            this.Controls.SetChildIndex(this.btnEliminar, 0);
+            this.Controls.SetChildIndex(this.btnModificar, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.label3, 0);
@@ -207,11 +259,11 @@
             this.Controls.SetChildIndex(this.txtCodigoPostal, 0);
             this.Controls.SetChildIndex(this.txtFecha, 0);
             this.Controls.SetChildIndex(this.lblTitulo, 0);
-            this.Controls.SetChildIndex(this.btnAgregar, 0);
-            this.Controls.SetChildIndex(this.btnEliminar, 0);
-            this.Controls.SetChildIndex(this.btnModificar, 0);
             this.Controls.SetChildIndex(this.btnBuscar, 0);
             this.Controls.SetChildIndex(this.btnSalir, 0);
+            this.Controls.SetChildIndex(this.btnInsert, 0);
+            this.Controls.SetChildIndex(this.btnDelete, 0);
+            this.Controls.SetChildIndex(this.btnUpdate, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,6 +282,9 @@
         public System.Windows.Forms.TextBox txtNombre;
         public System.Windows.Forms.TextBox txtApellido;
         public System.Windows.Forms.TextBox txtIDempleado;
-        private System.Windows.Forms.DateTimePicker txtFecha;
+        protected System.Windows.Forms.Button btnInsert;
+        public System.Windows.Forms.Button btnUpdate;
+        public System.Windows.Forms.Button btnDelete;
+        public System.Windows.Forms.DateTimePicker txtFecha;
     }
 }

@@ -34,7 +34,7 @@ namespace SMC.PresentationLayer
 
                 //Establecer las principales propiedades del Connection.
 
-                connection.ConnectionString = "User Id="+txtUsuario.Text+"; Password="+txtContraseña.Text+"; Data Source="+txtServidor.Text+"";
+                connection.ConnectionString = "User Id="+txtUsuario.Text+"; Password="+txtContraseña.Text+"; Data Source=XE";
                 //"Data Source="+txtServidor.Text+";Initial Catalog="+txtBaseDatos.Text+";User ID="+txtUsuario.Text+";Password="+txtContraseña.Text+"";
                 
                 //Almacenar el ConnectionString  en un campo estatico
@@ -148,7 +148,8 @@ namespace SMC.PresentationLayer
 
         private void FormaIngreso_Load(object sender, EventArgs e)
         {
-
+            BusquedasPersonalizadas.FormaBuscarProducto.indiceVentanaProducto += 1;
+            FormaBuscarCustomers.indiceVentanaCustomer += 1;
         }
     }
 }
